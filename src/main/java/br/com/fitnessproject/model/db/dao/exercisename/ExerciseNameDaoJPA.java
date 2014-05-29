@@ -2,12 +2,19 @@ package br.com.fitnessproject.model.db.dao.exercisename;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
+import org.springframework.stereotype.Repository;
+
 import br.com.fitnessproject.model.entity.ExerciseName;
-
+@Repository
 public class ExerciseNameDaoJPA implements ExerciseNameDao{
-
+	@PersistenceContext
+	private EntityManager entityManager;
 	@Override
 	public boolean add(ExerciseName exerciseName) {
+		entityManager.persist(exerciseName);
 		return false;
 	}
 
