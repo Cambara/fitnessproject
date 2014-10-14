@@ -4,12 +4,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-<link href="/fitnessproject/resources/css/style.css" rel="stylesheet" type="text/css" >
 
+<sitemesh:write property="head" />
 </head>
 <body>
-omg
-<span class="teste">oii </span>
+	
+	<div class="containerB">
+	   	<sitemesh:write property="body" />
+    </div>
 </body>
 </html>

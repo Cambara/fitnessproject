@@ -1,7 +1,6 @@
 package br.com.fitnessproject.model.db.dao.user;
 
 import java.util.List;
-
 import br.com.fitnessproject.model.entity.User;
 
 

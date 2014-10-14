@@ -1,3 +1,111 @@
-.teste{
-	color: red;
+html,body{
+	height: 100%;
+}
+body{
+	padding: 0px;
+	margin: 0px;
+
+}
+.painelbackground{
+	background-image: url('/fitnessproject/img/logo3.jpg');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-color: black;
+	height: 685px;
+	width: 100%;
+}
+.title_home{
+	margin-top: 20%;
+	margin-bottom: 20%;
+	color: white;
+}
+.title_home h1{
+	color: orange;
+	font-family: fantasy;
+}
+.section_home{
+	padding-top: 30px;
+	padding-bottom: 30px;
+	border-bottom-style: groove;
+	border-bottom-width: 1px;
+}
+.section_title{
+	border-bottom-style: solid;
+	border-bottom-color: rgba(0, 54, 226, 0.78);
+	border-bottom-width: 5px;
+}
+.footer_home{
+	padding-top: 4%;
+	padding-bottom: 1%;
+	background-color: rgba(66, 66, 66, 0.79);
+}
+.menu_footer{
+	padding-bottom: 50px;
+}
+.menu_footer a{
+	color: #FFFFFF;
+	font-size: 20px;
+}
+.form_signup{
+	margin-bottom: 80px;
+	margin-top: 80px;
+}
+.menu a{
+	height: 50px;
+	text-decoration: none;
+	color:#000000;
+	font-weight: bolder;
+}
+.main_menu a{
+	font-size: 30px;
+	text-decoration: none;
+	color:#000000;
+}
+.main_menu a:hover{
+	text-decoration: none;	
+}
+.side_menu li{
+	background-color: #FCFCFC;
+	box-shadow: 0 1px 1px rgba(0,0,0,0.05);
+	border-bottom-width: 1px;
+	border-bottom-style: inset;
+	border-bottom-right-radius: 4px;
+	border-color:#87CEFA;
+}
+.side_menu li a{
+	color: #000000;
+}
+.side_menu li:hover{
+/* 	background-color: black; */
+	border-color:#5DFAE7;
+	margin-left: 10px;
+}
+.side_menu li a:hover{
+	background-color: #FFFFFF;
+	color: orange;
+}
+.card{
+	display:block;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #ddd;
+	border-left-color: orange; 
+	border-left-width: 3px;
+	margin-bottom: 10px;
+	padding-top: 3px;
+	
+}
+.card:HOVER{
+	border-left-color: #5DFAE7;
+	-webkit-transition: border-left-color 1000ms linear;
+	-moz-transition: border-left-color 1000ms linear;
+	-o-transition: border-left-color 1000ms linear;
+} 
+.card_sub{
+	background-color: #FCFCFC;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	border-top-style: solid;
+	border-top-width: 1px;
+	border-top-color: #ddd;
 }
