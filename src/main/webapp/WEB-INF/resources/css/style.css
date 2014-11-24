@@ -109,3 +109,8 @@ body{
 	border-top-width: 1px;
 	border-top-color: #ddd;
 }
+.error_form_box{
+	padding: 3px;
+	margin: 0px;
+	margin-top: 5px;
+}

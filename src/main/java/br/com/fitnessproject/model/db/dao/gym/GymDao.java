@@ -6,8 +6,8 @@ import br.com.fitnessproject.model.entity.Gym;
 
 public interface GymDao {
 	
-	public boolean add(Gym gym);
-	public boolean update(Gym gym);
+	public Gym add(Gym gym);
+	public Gym update(Gym gym);
 	public boolean remove(Long id);
 	public Gym findById(Long id);
 	public List<Gym> list();

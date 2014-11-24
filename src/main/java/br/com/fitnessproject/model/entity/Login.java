@@ -1,5 +1,8 @@
 package br.com.fitnessproject.model.entity;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,19 +12,20 @@ import javax.persistence.Table;
 
 import br.com.fitnessproject.model.enums.StatusLogin;
 import br.com.fitnessproject.model.enums.TypeLogin;
+import br.com.fitnessproject.model.service.EncryptionMD5;
 
 @Entity
 @Table(name="login")
 public class Login {
 	@Id@GeneratedValue
 	private Long id;
-	@Column
+	@Column(unique = true)
 	private String email;
-	@Column
+	@Column()
 	private String password;
 	@Column
 	private StatusLogin status;
-	@Column
+	@Column()
 	private TypeLogin type;
 	@OneToOne
 	private Photo photo;
@@ -43,7 +47,8 @@ public class Login {
 		return password;
 	}
 	public void setPassword(String password) {
-		this.password = password;
+		
+		this.password = EncryptionMD5.encrypt(password);
 	}
 	public StatusLogin getStatus() {
 		return status;

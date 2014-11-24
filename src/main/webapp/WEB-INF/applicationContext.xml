@@ -15,7 +15,12 @@
        ">
 	<context:annotation-config /> 
     <context:component-scan base-package="br.com.fitnessproject"/>
-
+	
+	<bean id="appUrl" class="java.lang.String" autowire-candidate="true">
+		<constructor-arg>
+			<value>http://localhost:8080/fitnnesproject/</value>
+		</constructor-arg>
+	</bean>
 
     <bean id="jdbcPropertyConfigurer"
           class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
@@ -53,10 +58,10 @@
 	</bean>
 	<!-- Transaction manager for a single JPA EntityManagerFactory (alternative 
 		to JTA) -->
-<!-- 	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager" -->
-<!-- 		p:entityManagerFactory-ref="entityManagerFactory" /> -->
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager"
+		p:entityManagerFactory-ref="entityManagerFactory" />
 <!-- 	Enables scanning for @Transactional annotations -->
-<!-- 	<tx:annotation-driven transaction-manager="transactionManager" /> -->
+	<tx:annotation-driven transaction-manager="transactionManager" />
 	
 
 </beans>

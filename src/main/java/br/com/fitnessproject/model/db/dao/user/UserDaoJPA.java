@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import javax.transaction.TransactionManager;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,35 +16,43 @@ import br.com.fitnessproject.model.entity.User;
 public class UserDaoJPA implements UserDao{
 	
 	@PersistenceContext
-	private EntityManager entityManager;
+	private EntityManager entityManager; 
 	
 	
-	@Override
-	public Boolean add(User user) {
-		entityManager.getTransaction().begin();
+	@Transactional
+	public User add(User user) {
 		entityManager.persist(user);
-		entityManager.getTransaction().commit();
-		return true;
+		return user;
 	}
 
 	@Override
-	public boolean update(User user) {
-		return false;
+	@Transactional
+	public User update(User user) {
+		entityManager.merge(user);
+		return user;
 	}
 
 	@Override
+	@Transactional
 	public boolean remove(Long id) {
-		return false;
+		User user = entityManager.find(User.class, id);
+		boolean removed = user != null;
+		if(removed){
+			entityManager.remove(user);
+		}
+		return removed;
 	}
 
 	@Override
 	public User findById(Long id) {
-		return null;
+		User user = entityManager.find(User.class, id);
+		return user;
 	}
 
 	@Override
 	public List<User> list() {
-		return null;
+		TypedQuery<User> query = entityManager.createQuery("SELECT u FROM User u", User.class);
+		return query.getResultList();
 	}
 	
 }
