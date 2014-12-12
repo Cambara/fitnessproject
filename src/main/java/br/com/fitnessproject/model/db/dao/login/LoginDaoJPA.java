@@ -51,8 +51,8 @@ public class LoginDaoJPA implements LoginDao{
 		query.setParameter("email", email);
 		Login l = null; 
 		try {
-			l = (Login) query.getSingleResult();			
-		} catch (Exception e) {}
+			l = (Login) query.getSingleResult();
+		} catch (Exception e) {	}
 		return  l;
 	}
 

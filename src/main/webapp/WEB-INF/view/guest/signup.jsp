@@ -5,104 +5,76 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Cadastro</title>
+<script type="text/javascript" src="/fitnessproject/js/angular/angular.min.js"></script>
+<script type="text/javascript" src="/fitnessproject/js/angular/ajax.js"></script>
+<script type="text/javascript" src="/fitnessproject/js/angular/model.js"></script>
+<script type="text/javascript" src="/fitnessproject/js/angular/controller.js"></script> 
 </head>
 <body>
 	<%@ include file="menuGuest.jsp" %>
-	<div class="container" style="min-height: 80%;">
+	<div class="container" style="min-height: 80%;" ng-app="myApp" ng-controller="loginController">
 		<div class="row">
 			<div class="col-sm-offset-1">
 				<h1>Cadastre-se</h1>
 				<div class="row">
 					<div class="col-xs-offset-1 col-xs-10 col-sm-offset-1 col-sm-5 col-md-3">
-						<form id="formSignup" role="form" class="form_signup" action="doSignup" method="post" onsubmit="return false">
+						<div id="formSignup" role="form" class="form_signup">
 							<div id="groupname" class="form-group">
 								<label>Nome*:</label>
-								<input id="name" class="form-control validate_form" name="name" value="${name}">
+								<input id="name" class="form-control validate_form" ng-model="login.name">
+								<div class="alert alert-danger fade in error_form_box" ng-show="login.validate.name.status">
+									<button type="button" class="close" ng-click="login.validate.close('name')">
+										<span aria-hidden="true">×</span>
+										<span class="sr-only">Close</span>
+									</button>
+									<strong>{_login.validate.name.msg_}</strong>
+								</div>
 								
 							</div>
 							<div id="groupemail" class="form-group">
 								<label>Email*:</label>
-								<input id="email" class="form-control validate_form" type="email" name="email" value="${login.email}">
+								<input id="email" class="form-control validate_form" type="text" ng-model="login.email">
+								<div class="alert alert-danger fade in error_form_box" ng-show="login.validate.email.status">
+									<button type="button" class="close" ng-click="login.validate.close('email')">
+										<span aria-hidden="true">×</span>
+										<span class="sr-only">Close</span>
+									</button>
+									<strong>{_login.validate.email.msg_}</strong>
+								</div>
 								
 							</div>
 							<div id="grouppassword" class="form-group">
 								<label>Senha*:</label>
-								<input id="password" class="form-control validate_form" type="password" name="password">
+								<input id="password" class="form-control validate_form" type="password" ng-model="login.password">
+								<div class="alert alert-danger fade in error_form_box" ng-show="login.validate.password.status">
+									<button type="button" class="close" ng-click="login.validate.close('password')">
+										<span aria-hidden="true">×</span>
+										<span class="sr-only">Close</span>
+									</button>
+									<strong>{_login.validate.password.msg_}</strong>
+								</div>
 							</div>
 							<div id="groupConfirmPassword" class="form-group">
 								<label>Confirma Senha*:</label>
-								<input id="confirmPassword" class="form-control" type="password" name="confirmPassword">
+								<input id="confirmPassword" class="form-control" type="password" ng-model="login.confirmPassword">
+								<div class="alert alert-danger fade in error_form_box" ng-show="login.validate.confirmPassword.status">
+									<button type="button" class="close" ng-click="login.validate.close('confirmPassword')">
+										<span aria-hidden="true">×</span>
+										<span class="sr-only">Close</span>
+									</button>
+									<strong>{_login.validate.confirmPassword.msg_}</strong>
+								</div>
 							</div>
 							<div class="form-group">
 								<label>Tipo*:</label>
-								<select class="form-control" name="type">
-									<option value="USER">Usuário</option>
+								<select class="form-control" ng-model="login.type">
+									<option value="USER" ng-selected="true">Usuário</option>
 									<option value="GYM">Academia</option>
-								</select>
+								</select>								
 							</div>
-							<button type="button" class="btn btn-primary btn-lg hidden-xs" onclick="doSignup();">Cadastrar</button>
-							<button type="button" class="btn btn-primary btn-lg btn-block visible-xs" onclick="doSignup();" >Cadastrar</button>
-						</form>
-						<script type="text/javascript">
-							function doSignup()
-							{
-								if(validatorSignup())
-								{
-									$('#formSignup').attr('onsubmit','true');
-									$('#formSignup').submit();
-								}
-							}
-							function validatorSignup()
-							{
-								var response = true;
-								var div = '<div class="alert alert-danger fade in error_form_box" role="alert"><button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button><strong>Campo vazio</strong></div>';
-								var divSenha = '<div class="alert alert-danger fade in error_form_box" role="alert"><button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button><strong>Senhas estão diferentes</strong></div>';
-								var formInput = $('#formSignup').find('.validate_form');
-								for(var i = 0; i < formInput.length; i++){
-									var id = formInput[i].attributes.id.value;
-									if($('#'+id).val()=="")
-	 								{	
-	 									var divError = $('#group'+id).find('.alert')
-	 									var existError = divError.length == 1?true:false;
-	 									if(!existError)
-	 									{
-	 										$('#group'+id).append(div);									
-	 									}
-	 									console.log('campo vazio');
-	 									response = false;
-										
-	 								}else{
-	 									var divError = $('#group'+id).find('.alert')
-	 									var existError = divError.length == 1?true:false;
-	 									if(existError)
-	 									{									
-	 										divError.alert('close');
-	 									}
-	 								}	
-									
-								}
-								if($('#password').val() != $('#confirmPassword').val() && $('#password').val()!="")
-								{	
-									var divError = $('#groupConfirmPassword').find('.alert')
-									var existError = divError.length == 1?true:false;
-									if(!existError)
-									{
-										$('#groupConfirmPassword').append(divSenha);
-									}
-									console.log('senhas diferentes!');
-									response = false;
-								}else{
-									var divError = $('#groupConfirmPassword').find('.alert')
-									var existError = divError.length == 1?true:false;
-									if(existError)
-									{									
-										divError.alert('close');
-									}
-								}
-								
-								return response;
-							}
-						</script>
+							<button type="button" class="btn btn-primary btn-lg hidden-xs" ng-click="login.save();">Cadastrar</button>
+							<button type="button" class="btn btn-primary btn-lg btn-block visible-xs" ng-click="login.save();" >Cadastrar</button>
+						</div>
 					</div>
 				</div>
 			</div>

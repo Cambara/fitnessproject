@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -45,23 +46,34 @@ public class ControllerGuest {
 		return dir+"signup";
 	}
 	@RequestMapping(value="doSignup")
-	public String doSignup(@ModelAttribute @Valid Login login, BindingResult result, 
-			@RequestParam String name, @RequestParam String confirmPassword,ModelMap model){
-		String response = dir+"signup";
-		Map<String, Object> map = new HashMap<String, Object>(); 
-		map.put("login", login);
-		map.put("name", name);
-		map.put("confirmPassword", confirmPassword);
-		new ValidateSignup(daoLogin).validate(map, result); 
-		if(!result.hasErrors()){			
-			if(new SignupService(userDao,gymDao).completeSignup(daoLogin, login, name)){
-				response = loginDir+"/index";
-			}
-		}else{
-			model.addAttribute("login", login);
-			model.addAttribute("name", name);
-		}
+	public @ResponseBody Map<String,Object> doSignup(@RequestBody Map<String,String> request){
+		String result= "500";
 		
+		Login l = new Login();
+		l.setEmail(request.get("email"));
+		l.setPassword(request.get("password"));
+		l.setType(TypeLogin.valueOf(request.get("type")));
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("login", l);
+		map.put("confirmPassword", request.get("confirmPassword"));
+		map.put("name", request.get("name"));
+		Map<String, String> errors = new HashMap<String, String>();
+		new ValidateSignup(daoLogin).validate(map, errors);
+		if(errors.isEmpty()){			
+			if(new SignupService(userDao,gymDao).completeSignup(daoLogin, l, request.get("name"))){
+				
+				result="200";
+			}
+		}
+		Map<String, Object> response = new HashMap<String, Object>();
+		response.put("result", result);
+		response.put("errors", errors);
+		
+		if(l.getType().equals(TypeLogin.GYM)){
+			response.put("location", "gym/index");
+		}else{
+			response.put("location", "user/index");
+		}
 		return response;
 	}
 	@RequestMapping(value="/login")
@@ -71,10 +83,11 @@ public class ControllerGuest {
 	}
 	
 	@RequestMapping(value="/doLogin")
-	public String doLogin(@ModelAttribute @Valid Login login, BindingResult result){
+	public String doLogin(@ModelAttribute @Valid Login login){
 		String response = dir+"login"; 
-		new ValidateEmail(daoLogin, true).validate(login, result); 
-		if(!result.hasErrors()){
+		Map<String, String> errors = new HashMap<String, String>();
+		new ValidateEmail(daoLogin, true).validate(login, errors); 
+		if(errors.isEmpty()){
 			//validar o email, senha e o status do usuario
 		}
 		return response;
