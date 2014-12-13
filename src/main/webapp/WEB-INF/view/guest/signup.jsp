@@ -7,8 +7,9 @@
 <title>Cadastro</title>
 <script type="text/javascript" src="/fitnessproject/js/angular/angular.min.js"></script>
 <script type="text/javascript" src="/fitnessproject/js/angular/ajax.js"></script>
-<script type="text/javascript" src="/fitnessproject/js/angular/model.js"></script>
-<script type="text/javascript" src="/fitnessproject/js/angular/controller.js"></script> 
+<script type="text/javascript" src="/fitnessproject/js/angular/validate/model.js"></script>
+<script type="text/javascript" src="/fitnessproject/js/angular/login/model.js"></script>
+<script type="text/javascript" src="/fitnessproject/js/angular/login/controller.js"></script> 
 </head>
 <body>
 	<%@ include file="menuGuest.jsp" %>
