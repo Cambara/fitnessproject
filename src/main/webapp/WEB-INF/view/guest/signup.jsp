@@ -12,7 +12,7 @@
 </head>
 <body>
 	<%@ include file="menuGuest.jsp" %>
-	<div class="container" style="min-height: 80%;" ng-app="myApp" ng-controller="loginController">
+	<div class="container" style="min-height: 80%;" ng-app="myApp" ng-controller="signupController">
 		<div class="row">
 			<div class="col-sm-offset-1">
 				<h1>Cadastre-se</h1>
@@ -21,7 +21,7 @@
 						<div id="formSignup" role="form" class="form_signup">
 							<div id="groupname" class="form-group">
 								<label>Nome*:</label>
-								<input id="name" class="form-control validate_form" ng-model="login.name">
+								<input id="name" class="form-control validate_form" ng-model="login.form.name">
 								<div class="alert alert-danger fade in error_form_box" ng-show="login.validate.name.status">
 									<button type="button" class="close" ng-click="login.validate.close('name')">
 										<span aria-hidden="true">×</span>
@@ -33,7 +33,7 @@
 							</div>
 							<div id="groupemail" class="form-group">
 								<label>Email*:</label>
-								<input id="email" class="form-control validate_form" type="text" ng-model="login.email">
+								<input id="email" class="form-control validate_form" type="text" ng-model="login.form.email">
 								<div class="alert alert-danger fade in error_form_box" ng-show="login.validate.email.status">
 									<button type="button" class="close" ng-click="login.validate.close('email')">
 										<span aria-hidden="true">×</span>
@@ -45,7 +45,7 @@
 							</div>
 							<div id="grouppassword" class="form-group">
 								<label>Senha*:</label>
-								<input id="password" class="form-control validate_form" type="password" ng-model="login.password">
+								<input id="password" class="form-control validate_form" type="password" ng-model="login.form.password">
 								<div class="alert alert-danger fade in error_form_box" ng-show="login.validate.password.status">
 									<button type="button" class="close" ng-click="login.validate.close('password')">
 										<span aria-hidden="true">×</span>
@@ -56,7 +56,7 @@
 							</div>
 							<div id="groupConfirmPassword" class="form-group">
 								<label>Confirma Senha*:</label>
-								<input id="confirmPassword" class="form-control" type="password" ng-model="login.confirmPassword">
+								<input id="confirmPassword" class="form-control" type="password" ng-model="login.form.confirmPassword">
 								<div class="alert alert-danger fade in error_form_box" ng-show="login.validate.confirmPassword.status">
 									<button type="button" class="close" ng-click="login.validate.close('confirmPassword')">
 										<span aria-hidden="true">×</span>
@@ -67,7 +67,7 @@
 							</div>
 							<div class="form-group">
 								<label>Tipo*:</label>
-								<select class="form-control" ng-model="login.type">
+								<select class="form-control" ng-model="login.form.type">
 									<option value="USER" ng-selected="true">Usuário</option>
 									<option value="GYM">Academia</option>
 								</select>								

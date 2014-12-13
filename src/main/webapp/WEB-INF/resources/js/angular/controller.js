@@ -3,8 +3,10 @@ var app = angular.module('myApp', ['LoginModel'],function($interpolateProvider){
 	$interpolateProvider.endSymbol('_}');
 });
 
-app.controller("loginController",function($scope, Login) {
-	$scope.login = Login; 
-	$scope.t = 'tiago';
+app.controller("signupController",function($scope, Login) {
+	$scope.login = Login;
+});
+app.controller("loginController",function($scope, Login){
+	$scope.login = Login;
 });
 
