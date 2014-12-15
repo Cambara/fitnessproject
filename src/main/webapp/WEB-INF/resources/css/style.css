@@ -6,6 +6,10 @@ body{
 	margin: 0px;
 
 }
+div.infowindow-content {
+    width: 300px;
+    display: block;
+}
 .painelbackground{
 	background-image: url('/fitnessproject/img/logo3.jpg');
 	background-repeat: no-repeat;
