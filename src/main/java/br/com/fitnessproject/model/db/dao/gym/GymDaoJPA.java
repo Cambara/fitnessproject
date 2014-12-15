@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.com.fitnessproject.model.entity.Gym;
-import br.com.fitnessproject.model.entity.User;
+import br.com.fitnessproject.model.entity.Login;
 @Repository
 public class GymDaoJPA implements GymDao{
 	
@@ -50,6 +50,17 @@ public class GymDaoJPA implements GymDao{
 	public List<Gym> list() {
 		TypedQuery<Gym> query = entityManager.createQuery("SELECT g FROM Gym g", Gym.class);
 		return query.getResultList();
+	}
+	
+	@Override 
+	public Gym findByLogin(Login l){
+		TypedQuery<Gym> query = entityManager.createQuery("SELECT g FROM Gym g WHERE g.login = :l", Gym.class);
+		query.setParameter("l", l);
+		Gym g = null; 
+		try {
+			g = (Gym) query.getSingleResult();
+		} catch (Exception e) {	}
+		return  g;
 	}
 
 }

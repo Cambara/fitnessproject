@@ -1,4 +1,3 @@
-
 angular.module('LoginModel', ['Ajax']);
 angular.module('LoginModel').factory('Login', function(Request){
 	
@@ -45,6 +44,7 @@ angular.module('LoginModel').factory('Login', function(Request){
 	}
 	login.validate.errorServidor = function(errors) {
 		for ( var error in errors) {
+			login.validate[error] = new Validate();
 			login.validate[error].status = true;
 			login.validate[error].msg = errors[error];
 		}

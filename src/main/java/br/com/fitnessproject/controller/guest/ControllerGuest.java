@@ -1,28 +1,24 @@
 package br.com.fitnessproject.controller.guest;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-import javax.validation.Valid;
-import javax.xml.ws.BindingType;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import br.com.fitnessproject.model.db.dao.gym.GymDao;
 import br.com.fitnessproject.model.db.dao.login.LoginDao;
 import br.com.fitnessproject.model.db.dao.user.UserDao;
+import br.com.fitnessproject.model.entity.Gym;
 import br.com.fitnessproject.model.entity.Login;
-import br.com.fitnessproject.model.enums.StatusLogin;
+import br.com.fitnessproject.model.entity.User;
 import br.com.fitnessproject.model.enums.TypeLogin;
+import br.com.fitnessproject.model.service.LoginService;
 import br.com.fitnessproject.model.service.SignupService;
 import br.com.fitnessproject.model.service.validate.ValidateEmail;
 import br.com.fitnessproject.model.service.validate.ValidateSignup;
@@ -46,7 +42,7 @@ public class ControllerGuest {
 		return dir+"signup";
 	}
 	@RequestMapping(value="doSignup")
-	public @ResponseBody Map<String,Object> doSignup(@RequestBody Map<String,String> request){
+	public @ResponseBody Map<String,Object> doSignup(@RequestBody Map<String,String> request, HttpSession session){
 		String result= "500";
 		
 		Login l = new Login();
@@ -60,7 +56,7 @@ public class ControllerGuest {
 		Map<String, String> errors = new HashMap<String, String>();
 		new ValidateSignup(daoLogin).validate(map, errors);
 		if(errors.isEmpty()){			
-			if(new SignupService(userDao,gymDao).completeSignup(daoLogin, l, request.get("name"))){
+			if(new SignupService(userDao,gymDao,session).completeSignup(daoLogin, l, request.get("name"))){
 				
 				result="200";
 			}
@@ -83,13 +79,34 @@ public class ControllerGuest {
 	}
 	
 	@RequestMapping(value="/doLogin")
-	public String doLogin(@ModelAttribute @Valid Login login){
-		String response = dir+"login"; 
+	public @ResponseBody Map<String,Object> doLogin(@RequestBody Login login, HttpSession session){
+		int result = 500;
+		String location = "";
+		Map<String,Object> response = new HashMap<String, Object>(); 
 		Map<String, String> errors = new HashMap<String, String>();
 		new ValidateEmail(daoLogin, true).validate(login, errors); 
 		if(errors.isEmpty()){
 			//validar o email, senha e o status do usuario
+			LoginService ls = new LoginService(userDao, gymDao,session);
+			login = daoLogin.findByEmail(login.getEmail());
+			Object r = ls.completeLogin(daoLogin, login, errors);
+			if(r != null){
+				if(login.getType().equals(TypeLogin.GYM)){
+					Gym g = (Gym) r;
+					result = 200;
+					location = "gym/index";
+					
+				}else if(login.getType().equals(TypeLogin.USER)){
+					User u = (User) r;
+					result = 200;
+					location = "user/index";
+				}				
+			}
+			
 		}
+		response.put("errors", errors);
+		response.put("location", location);
+		response.put("result", result);
 		return response;
 	}
 	

@@ -21,10 +21,19 @@ public class ValidateEmail{
 
 	
 	public void validate(Object e, Map<String, String> errors) {
-		String email = (String) e;
+		String email = "";
+		Login l = null;
+		if(isLogin){
+			l = (Login) e;
+			email = l.getEmail(); 
+		}else{
+			email = (String) e;
+		}
+		
 		Login login = dao.findByEmail(email);
 		if(isLogin){
-			if(login == null){
+			String password = l.getPassword();
+			if(login == null || !login.getPassword().equals(password)){
 				errors.put("email", "Email ou a senha podem estar errados!");
 			}
 		}else{

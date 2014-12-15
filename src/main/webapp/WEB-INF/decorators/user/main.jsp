@@ -13,7 +13,7 @@
 	<sitemesh:write property="title" />
 </title>
 </head>
-<body>
+<body ng-app="myApp" ng-controller="userInfoController">
 	<%@ include file="menus/mainMenu.jsp" %>
 	<div id="mainContainer" style="min-height: 80%;">
 		<div id="mainSubMenu" class="col-sm-2 hidden-xs">
