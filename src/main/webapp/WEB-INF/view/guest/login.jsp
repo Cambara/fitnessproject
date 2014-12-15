@@ -50,7 +50,6 @@
 				</div>
 			</div>
 		</div>		
-		<iframe  id="iframe" height="400px" width="100%" src="http://localhost:8080/fitnessproject/list" frameborder="1"></iframe>
 	</div>
 </body>
 </html>
