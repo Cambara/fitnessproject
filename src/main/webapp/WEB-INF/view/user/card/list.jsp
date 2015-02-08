@@ -7,27 +7,43 @@
 <title></title>
 </head>
 <body>
-	
+
 	<div style="margin-left: 10%;">
-		<div class="row"><h1>Series</h1></div>
+		<div class="row"><h1>Treinos</h1></div>
 		<div class="row">
 			<div class="col-sm-offset-1 col-xs-10">
 				<div class="row">
-					<div class="col-md-3 col-sm-4 col-xs-10 card">
-						<div class="row" style="padding-left: 3px;padding-bottom: 5px;">
-							<h4>Peito e Biceps - A</h4>
-						</div>
-						<div class="row card_sub">
-							<div class="col-xs-4">
-								<a href="#" title="Treinar"><span class=""></span></a>
-							</div>
-							<div class="col-xs-4">
-								<a href="#" title="Editar"><span class="glyphicon glyphicon-pencil"></span></a>
-							</div>
-							<div class="col-xs-4">
-								<a href="#" title="Remover"><span class="glyphicon glyphicon-trash" style="color:red;"></span></a>
+					<div class="col-sm-6 col-xs-10 card">
+						
+						<div class="row">
+							<div class="col-xs-offset-1">
+								<h4>Peito e Biceps - A</h4>
 							</div>
 						</div>
+						<div class="row">
+							<div class="col-xs-offset-1 col-xs-8">
+								<div class="row">
+									<h6>Inicio:01/12/2014</h6>
+								</div>
+								<div class="row">
+									<h6>Fim:01/02/2015</h6>
+								</div>
+							</div>
+							<div class="col-xs-offset-1 col-xs-2">
+								
+								<div class="row card_sub">
+									<a href="#" title="Treinar"><img alt="" src="/fitnessproject/img/icon/trainer.png" width="14px"></a>
+								</div>
+								<div class="row card_sub">
+									<a href="#" title="Editar"><span class="glyphicon glyphicon-pencil"></span></a>
+								</div>
+								<div class="row card_sub">
+									<a href="#" title="Remover"><span class="glyphicon glyphicon-trash" style="color:red;"></span></a>
+								</div>
+							
+							</div>
+						</div>
+
 					</div>
 							
 				</div>

@@ -8,7 +8,7 @@
 <%@ include file="common/css.jsp" %>
 <%@ include file="common/js.jsp" %>
 <sitemesh:write property="head" />
-<link rel="shortcut icon" type="image/x-icon" href="img/icon/site_icon.png">
+<link rel="shortcut icon" type="image/x-icon" href="/fitnessproject/img/icon/site_icon.png">
 <title>
 	<sitemesh:write property="title" />
 </title>
@@ -19,8 +19,11 @@
 		<div id="mainSubMenu" class="col-sm-2 hidden-xs">
 			<%@ include file="menus/sideMenu.jsp" %>
 		</div>
+		<div class="visible-xs">
+			<%@ include file="menus/sideMenuMobile.jsp" %>
+		</div>
 		<div class="col-sm-9" style="background-color: #FFFFFF;">
-			<div class="row">
+			<div >
 				<div id="subContainer">
 					<sitemesh:write property="body" />
 				</div>

@@ -17,7 +17,7 @@
 		<div class="row">
 			<div class="col-sm-offset-1">
 				<h1>Login</h1>
-				<div class="row">
+				<div >
 					<div class="col-xs-offset-1 col-xs-10 col-sm-offset-1 col-sm-5 col-md-3">
 						<div action="doLogin" role="form" class="form_signup" method="post">
 							<div class="form-group">
