@@ -16,7 +16,7 @@
 			</a>
 		</div>
 	</div>
-	<div ng-show="button.menu.status">
+	<div id="menuMobile" ng-show="button.menu.status">
 		<div class="mask_side_menu_mobile" ng-click="button.menu.open_close()"></div>
 		<div class="side_menu_mobile">
 			<div class="row" style="margin-bottom:30px">
@@ -38,20 +38,61 @@
 			</div>
 			
 			<div class="row">
-				<div class="col-xs-offset-1 col-xs-10">
-					Serie
+				<a href="${pageContext.request.contextPath}/user/card/list">
+					<div class="col-xs-offset-1 col-xs-10 section_sub_menu_mobile">
+						Serie
+					</div>
+				</a>
+			</div>
+			<div class="row">
+				<a href="#">
+					<div class="col-xs-offset-1 col-xs-10 section_sub_menu_mobile">
+						Medidas
+						
+					</div>
+				</a>
+			</div>
+			<div class="row">
+				<a href="#">
+					<div class="section_menu_mobile col-xs-offset-1 col-xs-10 section_sub_menu_mobile">
+						Academia
+					</div>
+				</a>
+			</div>
+			<div class="row">
+				<div class="col-xs-offset-1 col-xs-10 section_sub_title">
+					Configurações
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-xs-offset-1 col-xs-10">
-					Medidas
-				</div>
+				<a href="#">
+					<div class="col-xs-offset-1 col-xs-10 section_sub_menu_mobile">
+						Geral
+					</div>
+				</a>
 			</div>
 			<div class="row">
-				<div class="section_menu_mobile col-xs-offset-1 col-xs-10">
-					Academia
-				</div>
+				<a href="#">
+					<div class="col-xs-offset-1 col-xs-10 section_sub_menu_mobile">
+						Notificações
+					</div>
+				</a>
 			</div>
+			<div class="row">
+				<a href="#">
+					<div class="col-xs-offset-1 col-xs-10 section_sub_menu_mobile">
+						Trocar Senha
+					</div>
+				</a>
+			</div>
+			<div class="row">
+				<a href="#">
+					<div class="col-xs-offset-1 col-xs-10 section_sub_menu_mobile">
+						Sair
+					</div>
+				</a>
+			</div>
+			
 		</div>
 	</div>
 	</div>

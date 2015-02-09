@@ -165,8 +165,20 @@ div.infowindow-content {
 }
 
 .section_menu_mobile{
-	padding-bottom: 10px;
-	margin-bottom: 20px;
 	border-bottom-width: 1px;
-	border-bottom-style: dotted;  
+	border-bottom-style: dotted;
+	border-bottom-color: #000000;  
+}
+
+.section_sub_menu_mobile{
+	line-height: 40px;
+	font-size: 18px;
+}
+.section_sub_menu_mobile:HOVER{
+	background-color: rgb(240, 249, 255);
+}
+.section_sub_title{
+	margin-top: 10px;
+	color: rgb(113, 111, 111);
+	margin-bottom: 10px
 }
