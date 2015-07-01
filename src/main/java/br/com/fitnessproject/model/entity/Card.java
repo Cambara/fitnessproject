@@ -9,6 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -24,9 +26,13 @@ public class Card {
 	private Date dateBegin;
 	@Column(name = "date_end")
 	private Date dateEnd;
-	@OneToMany(targetEntity = Exercise.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private List<Exercise> exercise;
+	@OneToMany(mappedBy="card",targetEntity = TrainerCard.class, fetch = FetchType.LAZY, cascade ={ CascadeType.ALL})
+	private List<TrainerCard> trainers;
 	
+	@ManyToOne()
+	@JoinColumn(name="user_id")
+	private User user;
+		
 	//gets e sets
 	public Long getId() {
 		return id;
@@ -52,11 +58,17 @@ public class Card {
 	public void setDateEnd(Date dateEnd) {
 		this.dateEnd = dateEnd;
 	}
-	public List<Exercise> getExercise() {
-		return exercise;
+	public List<TrainerCard> getTrainer() {
+		return trainers;
 	}
-	public void setExercise(List<Exercise> exercise) {
-		this.exercise = exercise;
+	public void setTrainer(List<TrainerCard> trainers) {
+		this.trainers = trainers;
+	}
+	public User getUserId() {
+		return this.user;
+	}
+	public void setUser(User user) {
+		this.user = user;
 	}
 	
 	

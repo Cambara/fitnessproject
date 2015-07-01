@@ -15,7 +15,7 @@ import br.com.fitnessproject.model.entity.User;
 @RequestMapping(value="user")
 public class ControllerUser {
 	private static String dir = "user/";
-	@RequestMapping(value="/index")
+	@RequestMapping(value={"/index","","/"})
 	public String index() {
 		return dir + "index";
 	}

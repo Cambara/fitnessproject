@@ -12,9 +12,9 @@ public class Location {
 	@Id@GeneratedValue
 	private Long id;
 	@Column
-	private int x;
+	private Double lat;
 	@Column
-	private int y;
+	private Double lng;
 	
 	//gets e sets
 	public Long getId() {
@@ -23,17 +23,17 @@ public class Location {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public int getX() {
-		return x;
+	public Double getlat() {
+		return lat;
 	}
-	public void setX(int x) {
-		this.x = x;
+	public void setlat(Double lat) {
+		this.lat = lat;
 	}
-	public int getY() {
-		return y;
+	public Double getlng() {
+		return lng;
 	}
-	public void setY(int y) {
-		this.y = y;
+	public void setlng(Double lng) {
+		this.lng = lng;
 	}
 	
 	

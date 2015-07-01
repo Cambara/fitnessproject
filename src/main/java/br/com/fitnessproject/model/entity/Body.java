@@ -6,6 +6,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -33,7 +35,20 @@ public class Body {
 	private Double legR;
 	@Column
 	private Date date;
+	@Column
+	private Double hip;
+	@Column
+	private Double forearmL;
+	@Column
+	private Double forearmR;
+	@Column
+	private Double calfL;
+	@Column
+	private Double calfR;
 	
+	@ManyToOne()
+	@JoinColumn(name="user_id")
+	private User user;
 	
 	//gets e sets
 	public Long getId() {
@@ -101,6 +116,42 @@ public class Body {
 	}
 	public void setDate(Date date) {
 		this.date = date;
+	}
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
+	public Double getHip() {
+		return hip;
+	}
+	public void setHip(Double hip) {
+		this.hip = hip;
+	}
+	public Double getForearmL() {
+		return forearmL;
+	}
+	public void setForearmL(Double forearmL) {
+		this.forearmL = forearmL;
+	}
+	public Double getForearmR() {
+		return forearmR;
+	}
+	public void setForearmR(Double forearmR) {
+		this.forearmR = forearmR;
+	}
+	public Double getCalfL() {
+		return calfL;
+	}
+	public void setCalfL(Double calfL) {
+		this.calfL = calfL;
+	}
+	public Double getCalfR() {
+		return calfR;
+	}
+	public void setCalfR(Double calfR) {
+		this.calfR = calfR;
 	}
 	
 	

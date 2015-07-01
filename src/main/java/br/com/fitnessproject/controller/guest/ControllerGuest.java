@@ -25,21 +25,20 @@ import br.com.fitnessproject.model.service.validate.ValidateSignup;
 
 @Controller
 public class ControllerGuest {
-	private static String dir = "guest/";
-	private static String loginDir = "user/";
+	private static String DIR = "guest/";
 	@Autowired
 	LoginDao daoLogin;
 	@Autowired
 	UserDao userDao;
 	@Autowired
 	GymDao gymDao;
-	@RequestMapping(value="/index")
+	@RequestMapping(value={"/index","","/"})
 	public String index() {
-		return dir+"index";
+		return DIR+"index";
 	}
 	@RequestMapping(value="/signup")
 	public String signup(){
-		return dir+"signup";
+		return DIR+"signup";
 	}
 	@RequestMapping(value="doSignup")
 	public @ResponseBody Map<String,Object> doSignup(@RequestBody Map<String,String> request, HttpSession session){
@@ -75,7 +74,7 @@ public class ControllerGuest {
 	@RequestMapping(value="/login")
 	public String login(){
 		
-		return dir+"login";
+		return DIR+"login";
 	}
 	
 	@RequestMapping(value="/doLogin")
@@ -109,10 +108,14 @@ public class ControllerGuest {
 		response.put("result", result);
 		return response;
 	}
-	
+	@RequestMapping(value="logout")
+	public String logout(HttpSession session){
+		new LoginService(userDao, gymDao, session).logout();
+		return "redirect:/";
+	}
 	@RequestMapping(value="/list")
 	public String list(){
 		
-		return dir+"maps";
+		return DIR+"maps";
 	}
 }

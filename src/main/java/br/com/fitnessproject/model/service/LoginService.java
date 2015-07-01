@@ -43,6 +43,9 @@ public class LoginService {
 		
 		return resp;
 	}
+	public void logout(){
+		session.invalidate();
+	}
 	private User getUser(Login l){
 		User u = userDao.findByLogin(l);
 		session.setAttribute("user", u);

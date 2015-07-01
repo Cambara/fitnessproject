@@ -1,6 +1,7 @@
 package br.com.fitnessproject.model.entity;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -12,6 +13,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import br.com.fitnessproject.model.enums.GenderUser;
 
@@ -28,8 +32,8 @@ public class User {
 	private GenderUser gender;
 	@Column
 	private Date birthday;
-	@OneToMany(targetEntity = Card.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private List<Card> cards;
+	@OneToMany(mappedBy="user", targetEntity = Card.class, fetch = FetchType.LAZY)
+	private List<Card> cards = new ArrayList<Card>();
 	
 	//gets e sets
 	public Long getId() {
@@ -69,6 +73,7 @@ public class User {
 		this.cards = cards;
 	}
 	
+
 	
 	
 }

@@ -4,9 +4,10 @@
   <groupId>br.com.fitnessproject</groupId>
   <artifactId>fitnessproject</artifactId>
   <packaging>war</packaging>
-  <version>1.0-SNAPSHOT</version>
-  <name>fitnessproject Maven Webapp</name>
-  <url>http://maven.apache.org</url>
+  <version>1.2-SNAPSHOT</version>
+  <name>teste</name>
+  <url>http://http://teste-cambara.rhcloud.com/</url>
+  
 
   <properties>
     <spring.version>4.0.3.RELEASE</spring.version>
