@@ -18,6 +18,8 @@ app.controller("trainerController",function($scope, $compile, Crud,Request) {
 			id:{value:'',required:false, name:'id'},
 			name:{value:'', required:true, msg_error:'', show_error:false, name:'name'},
 			desc:{value:'', required:true, msg_error:'', show_error:false, name:'desc'},
+			rest_begin:{value:'', required:true, msg_error:'', show_error:false,name:'restBegin'},
+			rest_end:{value:'', required:true, msg_error:'', show_error:false,name:'restEnd'},
 			card:{value:{id:''}, required:false,name:'card'},
 			last_trainer:{value:'', required:false,name:'lastTrainer'},
 			exercises:{value:null, required:false,name:'exercises'}
@@ -55,6 +57,8 @@ app.controller("trainerController",function($scope, $compile, Crud,Request) {
 				$scope.crud.params.desc.value = trainer_card.desc;
 				$scope.crud.params.card.value = trainer_card.card;
 				$scope.crud.params.last_trainer.value = trainer_card.last_trainer;
+				$scope.crud.params.rest_begin.value = trainer_card.rest_begin;
+				$scope.crud.params.rest_end.value = trainer_card.rest_end;
 				$scope.crud.params.exercises.value = trainer_card.exercises;
 			}
 		}
@@ -112,6 +116,8 @@ app.controller("trainerController",function($scope, $compile, Crud,Request) {
 		var t = {};
 		t.id = trainer.id;
 		t.name = trainer.name;
+		t.rest_begin = trainer.rest_begin;
+		t.rest_end = trainer.rest_end;
 		t.exercises = [];
 		for(i in trainer.exercises){
 			var exercise = new Object();
@@ -179,6 +185,8 @@ app.controller("fastTrainerController",function($scope, Crud,Request) {
 			desc:{value:'', required:true, msg_error:'', show_error:false, name:'desc'},
 			card:{value:{id:''}, required:false,name:'card'},
 			last_trainer:{value:'', required:false,name:'lastTrainer'},
+			rest_begin:{value:'', required:false,name:'restBegin'},
+			rest_end:{value:'', required:false,name:'restEnd'},
 			exercises:{value:null, required:false,name:'exercises'}
 
 	};
@@ -221,6 +229,8 @@ app.controller("fastTrainerController",function($scope, Crud,Request) {
 		t.name = trainer.name.value;
 		t.desc = trainer.desc.value;
 		t.card = trainer.card.value;
+		t.rest_begin = trainer.rest_begin.value;
+		t.rest_end = trainer.rest_end.value;
 		t.exercises = [];
 		for(i in trainer.exercises.value){
 			var exercise = new Object();

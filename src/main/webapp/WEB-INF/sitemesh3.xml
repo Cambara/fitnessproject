@@ -1,6 +1,7 @@
 <sitemesh>
 	<mapping decorator="/WEB-INF/decorators/guest/main.jsp" />
 	<mapping decorator="/WEB-INF/decorators/user/main.jsp" path="/WEB-INF/view/user/*"/>
+	<mapping decorator="/WEB-INF/decorators/gym/main.jsp" path="/WEB-INF/view/gym/*"/>
     <!-- Excluir o caminho da decoracao. -->
     <mapping path="/WEB-INF/resources/*" exclue="true" />
     <mapping path="/WEB-INF/view/guest/maps.jsp" exclue="true" />

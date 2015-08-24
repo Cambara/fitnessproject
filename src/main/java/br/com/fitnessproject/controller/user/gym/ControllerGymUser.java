@@ -13,7 +13,7 @@ import br.com.fitnessproject.model.service.GymService;
 
 @Controller
 @RequestMapping(value="/user/gym")
-public class ControllerGym {
+public class ControllerGymUser {
 	private static String DIR = "/user/gym/";
 	@Autowired
 	private GymDao gymDao;
