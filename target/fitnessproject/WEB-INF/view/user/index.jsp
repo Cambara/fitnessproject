@@ -6,6 +6,7 @@
 <title>FitnessProject</title>
 </head>
 <body>
+	
 	<div class="row" ng-controller="fastTrainerController">
 			<a href="#" class="col-md-4 col-sm-5  col-sm-offset-1 col-xs-7 col-xs-offset-3 card card_add" 
 			title="Treinar"style="text-decoration:none" data-toggle="modal" data-target="#modal_form_measures" 

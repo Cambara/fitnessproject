@@ -14,7 +14,7 @@
 <body>
 	<%@ include file="menuGuest.jsp" %>
 	<div class="container" style="min-height: 80%;"ng-app="myApp" ng-controller="loginController">
-		<div class="row">
+		<div class="row" ng-keyup="$event.keyCode == 13 ? login.doLogin() : null">
 			<div class="col-xs-offset-1">
 				<h1 class="section_title">
 					<span>Login</span>

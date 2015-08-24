@@ -39,6 +39,8 @@ public class TrainerCardService {
 			trainer.put("name", t.getName());
 			trainer.put("desc", t.getDesc());
 			trainer.put("last_trainer", t.getLastTrainer());
+			trainer.put("rest_begin", t.getRestBegin());
+			trainer.put("rest_end", t.getRestEnd());
 			Map<String,Object> card = new HashMap<String, Object>();
 			card.put("id", t.getCard().getId());
 			trainer.put("card", card);
@@ -89,6 +91,8 @@ public class TrainerCardService {
 		trainer.put("desc", trainerCard.getDesc());
 		trainer.put("last_trainer", trainerCard.getLastTrainer());
 		trainer.put("id_card", trainerCard.getCard().getId());
+		trainer.put("rest_begin", trainerCard.getRestBegin());
+		trainer.put("rest_end", trainerCard.getRestEnd());
 		Map<String,Object> card = new HashMap<String, Object>();
 		card.put("id", trainerCard.getCard().getId());
 		trainer.put("card",card);
@@ -122,6 +126,8 @@ public class TrainerCardService {
 		card.setId(idCard);
 		String desc = (String) trainerCardMap.get("desc");
 		String idStr = trainerCardMap.get("id").toString();
+		String restBegin = (String) trainerCardMap.get("restBegin");
+		String restEnd = (String) trainerCardMap.get("restEnd");
 		Timestamp lastTrainer = null;
 		if(trainerCardMap.get("lastTrainer") != null){
 			Long lDate = (Long)trainerCardMap.get("lastTrainer");
@@ -137,6 +143,8 @@ public class TrainerCardService {
 		trainerCard.setDesc(desc);		
 		trainerCard.setLastTrainer(lastTrainer);
 		trainerCard.setName(name);
+		trainerCard.setRestBegin(restBegin);
+		trainerCard.setRestEnd(restEnd);
 		List<Exercise> exercises = createExerciseList(trainerCardMap.get("exercises"), trainerCard);
 		trainerCard.setExercises(exercises);
 		return trainerCard;
@@ -174,6 +182,8 @@ public class TrainerCardService {
 		trainerCardMap.put("last_trainer", trainerCard.getLastTrainer());
 		trainerCardMap.put("name", trainerCard.getName());
 		trainerCardMap.put("desc", trainerCard.getDesc());
+		trainerCardMap.put("rest_begin", trainerCard.getRestBegin());
+		trainerCardMap.put("rest_end", trainerCard.getRestEnd());
 		trainerCardMap.put("exercises",createExercisesMap(trainerCard.getExercises()) );
 		Map<String,Object> cardMap = new HashMap<String, Object>();
 		Long idCard = null;

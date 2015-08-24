@@ -37,6 +37,30 @@
 				</div>
 			</div>
 			
+			<div id="groupname" class="form-group">
+				<label>Descanso Tempo Inicial (Tempo em segundos):</label>
+				<input id="rest_begin" class="form-control validate_form" ng-model="crud.params.rest_begin.value" style="width:70px">
+				<div class="alert alert-danger fade in error_form_box" ng-show="crud.params.rest_begin.show_error"
+				ng-click="crud.close_msg_error('rest_begin')">
+					<button type="button" class="close">
+						<span aria-hidden="true">×</span>
+						<span class="sr-only">Close</span>
+					</button>
+					<strong><strong>{_crud.params.name.msg_error_}</strong></strong>
+				</div>
+			</div>
+			<div id="groupname" class="form-group">
+				<label>Descanso Tempo Inicial (Tempo em segundos):</label>
+				<input id="rest_end" class="form-control validate_form" ng-model="crud.params.rest_end.value" style="width:70px">
+				<div class="alert alert-danger fade in error_form_box" ng-show="crud.params.rest_end.show_error"
+				ng-click="crud.close_msg_error('rest_end')">
+					<button type="button" class="close">
+						<span aria-hidden="true">×</span>
+						<span class="sr-only">Close</span>
+					</button>
+					<strong><strong>{_crud.params.name.msg_error_}</strong></strong>
+				</div>
+			</div>
        	</div>
       </div>
       <div class="modal-header">

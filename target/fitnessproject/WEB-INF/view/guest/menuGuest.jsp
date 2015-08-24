@@ -8,7 +8,7 @@
     	<a id="menu_guest" href="#" class="visible-xs" onclick="open_close_menu_guest()">
     		<img src="img/icon/site_icon.png" alt="">
     		<span>Fitness Project</span>
-    		<span class="glyphicon glyphicon-chevron-down" style="font-size:25px"></span>
+    		<span class="glyphicon glyphicon-chevron-down" style="font-size:25px;top:5px;"></span>
     	</a>
     </div>
     <div id="submenu_guest" class="col-sm-6 hidden-xs">

@@ -19,7 +19,7 @@
 				<h1 class="section_title">
 					<span>Cadastre-se</span>	
 				</h1>
-				<div>
+				<div ng-keyup="$event.keyCode == 13 ? login.save() : null">
 					<div class="col-xs-offset-1 col-xs-10 col-sm-offset-1 col-sm-5 col-md-3">
 						<div id="formSignup" role="form" class="form_signup">
 							<div id="groupname" class="form-group">
@@ -72,7 +72,7 @@
 								<label>Tipo*:</label>
 								<select class="form-control" ng-model="login.form.type">
 									<option value="USER" ng-selected="true">Usuário</option>
-									<option value="GYM">Academia</option>
+<!-- 									<option value="GYM">Academia</option> -->
 								</select>								
 							</div>
 							<button type="button" class="btn btn-primary btn-lg hidden-xs" ng-click="login.save();">Cadastrar</button>

@@ -40,7 +40,7 @@
 			<div class="row">
 				<a href="${pageContext.request.contextPath}/user/card">
 					<div class="col-xs-offset-1 col-xs-10 section_sub_menu_mobile">
-						Serie
+						Série
 					</div>
 				</a>
 			</div>

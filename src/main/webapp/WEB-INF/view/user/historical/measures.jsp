@@ -11,7 +11,14 @@
 		<div class="row">
 			<h3>Histórico de Medidas</h3>
 		</div>
-		
+		<div class="row" ng-if="crud.list < 1">
+			<div class="alert alert-info" role="alert">
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<span>
+					Você não adicionou as suas mediadas corporais. Adicione uma clicando <a href=" /fitnessproject/user/measures">aqui</a>
+				</span>
+			</div>
+		</div>
 		<div class="row">
 			<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 				<div class="panel panel-default" ng-repeat="body in crud.list">

@@ -27,7 +27,10 @@ public class TrainerCard {
 	private String desc;
 	@Column(name="last_trainer")
 	private Timestamp lastTrainer;
-	
+	@Column(name="rest_begin")
+	private String restBegin;
+	@Column(name="rest_end")
+	private String restEnd;
 	@OneToMany(mappedBy="trainerCard",targetEntity = Exercise.class, fetch = FetchType.EAGER, cascade ={ CascadeType.ALL}, orphanRemoval = true)
 	private List<Exercise> exercises = new ArrayList<Exercise>();
 	@OneToMany(mappedBy="trainerCard",targetEntity = HistoricalTraining.class, fetch = FetchType.LAZY, cascade ={ CascadeType.REMOVE}, orphanRemoval = true)
@@ -91,6 +94,22 @@ public class TrainerCard {
 
 	public void setHistorical(List<HistoricalTraining> historical) {
 		this.historical = historical;
+	}
+
+	public String getRestBegin() {
+		return restBegin;
+	}
+
+	public void setRestBegin(String restBegin) {
+		this.restBegin = restBegin;
+	}
+
+	public String getRestEnd() {
+		return restEnd;
+	}
+
+	public void setRestEnd(String restEnd) {
+		this.restEnd = restEnd;
 	}	
 	
 	

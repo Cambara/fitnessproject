@@ -56,7 +56,7 @@
 					<img alt="" src="${pageContext.request.contextPath}/img/icon/rest_icon.png"> 
 				</div>
 				<div class="inline-block">
-					<span>- Descansar</span>
+					<span>- Descanso de {_ trainer.rest_begin _} - {_trainer.rest_end _} segundos.</span>
 				</div>
 			</div>
 		</div>

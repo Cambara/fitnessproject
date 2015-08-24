@@ -72,7 +72,7 @@
 								<label>Tipo*:</label>
 								<select class="form-control" ng-model="login.form.type">
 									<option value="USER" ng-selected="true">Usuário</option>
-<!-- 									<option value="GYM">Academia</option> -->
+									<option value="GYM">Academia</option>
 								</select>								
 							</div>
 							<button type="button" class="btn btn-primary btn-lg hidden-xs" ng-click="login.save();">Cadastrar</button>
